@@ -28,13 +28,23 @@ function Locale_Switch_New(locale){
 	request.send();
 	request.onload = function() {
 		var data=request.response;
-		var data_key=Object.keys(data);
-		var data_value=Object.values(data);
-		for (var i=0;i<data_key.length;i++){
-			if (i===1){
-				document.title=data_value[i];
+		var data1_value=Object.values(data);
+		for (var i=0;i<data1_value.length;i++){
+			var data2_key=Object.keys(data1_value[i]);
+			var data2_value=Object.values(data1_value[i]);
+			var data3_key=Object.keys(data2_value[0]);
+			var data3_value=Object.values(data2_value[0]);
+			for (var i=0;i<data3_key.length;i++){
+				if (data3_value[0]==$("#filename").text()){
+					if (i==2){
+						document.title=data3_value[i];
+					}
+					$("#"+data3_key[i]).text(data3_value[i]);
+				}
+				else{
+					return 0;
+				}
 			}
-			$("#"+data_key[i]).text(data_value[i]);
 		}
 	}
 }
