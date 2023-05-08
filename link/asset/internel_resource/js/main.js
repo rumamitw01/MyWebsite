@@ -1,5 +1,5 @@
-document.write('<script src="./asset/internel_resource/js/jquery-3.6.4.slim.min.js"></script>');
-document.write('<script src="./asset/internel_resource/js/LocaleSwitch.js"></script>');
+document.write('<script src="../asset/externel_resource/js/jquery-3.6.4.slim.min.js"></script>');
+document.write('<script src="../asset/internel_resource/js/LocaleSwitch.js"></script>');
 //語言切換
 //第一版寫法
 

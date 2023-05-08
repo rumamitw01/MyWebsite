@@ -1,5 +1,4 @@
-//這裡註解掉是因為在main.js中已引入jquery，不用引入第二次，一般測試情況請引入jquery
-//document.write('<script src="./asset/internel_resource/js/jquery-3.6.4.slim.min.js"></script>');
+//此程式相依於jquery，不引入jquery無法使用
 
 //第一版寫法
 $(document).ready(
@@ -21,7 +20,17 @@ function Locale_Switch_Old(times,input){
 
 function Locale_Switch_New(locale){
 	$("#locale").text(locale);
-	var requestURL="./asset/internel_resource/locale/locale_"+locale+".json";
+	var temp=String(document.location);
+	var tempList=temp.split("/");
+	var path=""
+	if ((temp.endsWith("html")) || (temp.endsWith("php"))){
+		tempList.pop();
+	}
+	for (var i=0;i<tempList.length;i++){
+		path=path+tempList[i]+"/";
+	}
+	var LocalePath="/asset/internel_resource/locale/"; //這裡請輸入語系檔的所在資料夾相對網頁所在處的路徑，僅支援檔案結構相同的多網頁
+	var requestURL=path+LocalePath+"locale_"+locale+".json";
 	var request=new XMLHttpRequest();
 	request.open("get",requestURL);
 	request.responseType = 'json';
