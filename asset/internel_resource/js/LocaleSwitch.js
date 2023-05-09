@@ -1,8 +1,9 @@
 //此程式相依於jquery，不引入jquery無法使用
 
+var LocalePath="/asset/internel_resource/locale/"; //這裡請輸入語系檔所在資料夾
+
 function Locale_Switch(locale){
 	$("#locale").text(locale);
-	var LocalePath="/asset/internel_resource/locale/" //這裡請輸入語系檔所在資料夾
 	var path=String(document.location);
 	var temp_list=path.split("/");
 	if (path.endsWith("html")==false || path.endsWith("php")==false){
@@ -50,7 +51,7 @@ function Locale_Switch(locale){
 
 var locale=navigator.language;
 locale=locale.toLowerCase();
-var requestURL="/asset/internel_resource/locale/supported_locale.json";
+var requestURL=LocalePath+"supported_locale.json";
 var request=new XMLHttpRequest();
 request.open("get",requestURL);
 request.responseType = 'json';
