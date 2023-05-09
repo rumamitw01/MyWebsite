@@ -1,24 +1,6 @@
 //此程式相依於jquery，不引入jquery無法使用
 
-//第一版寫法
-$(document).ready(
-	function () {
-		$.fn.jqmultilang = 
-		function (l) {
-			$(this).html($(this).data("lang-" + l));
-		};
-	}
-);
-
-function Locale_Switch_Old(times,input){
-	$('#LocaleReq'+String(times)).jqmultilang(input);
-}
-
-
-
-//後續寫法
-
-function Locale_Switch_New(locale){
+function Locale_Switch(locale){
 	$("#locale").text(locale);
 	var temp=String(document.location);
 	var tempList=temp.split("/");
@@ -77,11 +59,11 @@ request.onload = function() {
 	var data_value=Object.values(data);
 	for (var i=0;i<data_key.length;i++){
 		if (locale.startsWith(data_key[i]) && locale.endsWith(data_value[i].toLowerCase())){
-			Locale_Switch_New(data_key[i]+"-"+data_value[i]);
+			Locale_Switch(data_key[i]+"-"+data_value[i]);
 			return 0;
 		}
 	}
-	Locale_Switch_New("en-US");
+	Locale_Switch("en-US");
 }
 
 
