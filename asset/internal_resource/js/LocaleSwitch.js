@@ -1,6 +1,6 @@
 //此程式相依於jquery，不引入jquery無法使用
 
-var LocalePath="/asset/internel_resource/locale/"; //這裡請輸入語系檔所在資料夾
+var LocalePath="/asset/internal_resource/locale/"; //這裡請輸入語系檔所在資料夾
 
 function Locale_Switch(locale){
 	$("#locale").text(locale);
