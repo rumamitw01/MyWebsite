@@ -2,7 +2,19 @@
 
 function Locale_Switch(locale){
 	$("#locale").text(locale);
-	var requestURL="/asset/internel_resource/locale/locale_"+locale+".json";
+	var LocalePath="/asset/internel_resource/locale/" //這裡請輸入語系檔所在資料夾
+	var path=String(document.location);
+	var temp_list=path.split("/");
+	if (path.endsWith("html")==false || path.endsWith("php")==false){
+		if ($("#filename").text()=="index.html" || $("#filename").text()=="index.php"){
+			temp_list[temp_list.length-1]=$("#filename").text();
+		}
+	}
+	path="";
+	for (var i=3;i<temp_list.length;i++){
+		path=path+"/"+temp_list[i];
+	}
+	var requestURL=LocalePath+"locale_"+locale+".json";
 	var request=new XMLHttpRequest();
 	request.open("get",requestURL);
 	request.responseType = 'json';
@@ -16,7 +28,7 @@ function Locale_Switch(locale){
 			var data3_key=Object.keys(data2_value[0]);
 			var data3_value=Object.values(data2_value[0]);
 			for (var i=0;i<data3_key.length;i++){
-				if (data3_value[0]==$("#filename").text()){
+				if (data3_value[0]==path){
 					if (i==2){
 						document.title=data3_value[i];
 					}
@@ -55,14 +67,3 @@ request.onload = function() {
 	}
 	Locale_Switch("en-US");
 }
-
-
-
-
-//多語系切換實時時間顯示格式
-	
-setInterval(function (){
-	var locale=$("#locale").text();
-	var time=new Date().toLocaleString(locale);
-    $("#Time").text(time);
-},100);
