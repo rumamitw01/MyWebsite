@@ -38,7 +38,7 @@ function Locale_Switch(locale){
 
 var locale=navigator.language;
 locale=locale.toLowerCase();
-var requestURL="./asset/internel_resource/locale/supported_locale.json";
+var requestURL="/asset/internel_resource/locale/supported_locale.json";
 var request=new XMLHttpRequest();
 request.open("get",requestURL);
 request.responseType = 'json';
