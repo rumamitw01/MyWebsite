@@ -44,7 +44,7 @@ function Locale_Switch(locale){
 
 
 
-//利用User Agent設定初始語系，支援語言切換功能第二版以後
+//利用User Agent設定初始語系
 
 var locale=navigator.language;
 locale=locale.toLowerCase();
