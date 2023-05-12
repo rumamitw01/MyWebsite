@@ -1,14 +1,12 @@
-//此程式相依於jquery，不引入jquery無法使用
-
 var LocalePath="/asset/internal_resource/locale/"; //這裡請輸入語系檔所在資料夾
 
 function Locale_Switch(locale){
-	$("#locale").text(locale);
+	document.getElementById("locale").innerText=locale;
 	var path=String(document.location);
 	var temp_list=path.split("/");
 	if (path.endsWith("html")==false || path.endsWith("php")==false){
-		if ($("#filename").text()=="index.html" || $("#filename").text()=="index.php"){
-			temp_list[temp_list.length-1]=$("#filename").text();
+		if (document.getElementById("filename")=="index.html" || document.getElementById("filename")=="index.php"){
+			temp_list[temp_list.length-1]=document.getElementById("filename");
 		}
 	}
 	path="";
@@ -33,7 +31,7 @@ function Locale_Switch(locale){
 					if (i==2){
 						document.title=data3_value[i];
 					}
-					$("#"+data3_key[i]).text(data3_value[i]);
+document.getElementById(data3_key[i]).innerText=data3_value[i];
 				}
 				else{
 					return 0;
