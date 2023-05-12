@@ -1,7 +1,7 @@
 //多語系切換實時時間顯示格式
 	
 setInterval(function (){
-	var locale=$("#locale").text();
+	var locale=document.getElementById("locale");
 	var time=new Date().toLocaleString(locale);
-    $("#Time").text(time);
+    document.getElementById("Time").innerText=time;
 },100);
