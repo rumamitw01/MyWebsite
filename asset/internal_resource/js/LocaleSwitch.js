@@ -5,8 +5,8 @@ function Locale_Switch(locale){
 	var path=String(document.location);
 	var temp_list=path.split("/");
 	if (path.endsWith("html")==false || path.endsWith("php")==false){
-		if (document.getElementById("filename")=="index.html" || document.getElementById("filename")=="index.php"){
-			temp_list[temp_list.length-1]=document.getElementById("filename");
+		if (document.getElementById("filename").outerText=="index.html" || document.getElementById("filename").outerText=="index.php"){
+			temp_list[temp_list.length-1]=document.getElementById("filename").outerText;
 		}
 	}
 	path="";
@@ -26,12 +26,12 @@ function Locale_Switch(locale){
 			var data2_value=Object.values(data1_value[i]);
 			var data3_key=Object.keys(data2_value[0]);
 			var data3_value=Object.values(data2_value[0]);
-			for (var i=0;i<data3_key.length;i++){
+			for (var i=1;i<data3_key.length;i++){
 				if (data3_value[0]==path){
 					if (i==2){
 						document.title=data3_value[i];
 					}
-document.getElementById(data3_key[i]).innerText=data3_value[i];
+					document.getElementById(data3_key[i]).innerText=data3_value[i];
 				}
 				else{
 					return 0;
