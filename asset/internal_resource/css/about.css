@@ -1,0 +1,8 @@
+.ts-tab .item:hover{
+    background-color:whitesmoke;
+    color:black;
+}
+.border{
+    border-style:solid;
+    border-color: whitesmoke;
+}
