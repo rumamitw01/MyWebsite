@@ -9,7 +9,7 @@ request.onload=function(){
         document.getElementById("projects").innerHTML+=
         "<tr><td>"+String(i+1)+
         "</td><td>"+data[i].name+
-        "</td><td><a href='"+data[i].svn_url+"'>"+data[i].svn_url+
+        "</td><td><a href='"+data[i].svn_url+"' target='_blank' rel='noreferrer noopenner' class='ts-text is-external-link'>"+data[i].svn_url+
         "</a></td><td>"+data[i].description+
         "</td></tr>";
     }

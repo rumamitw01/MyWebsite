@@ -1,16 +1,30 @@
 var Theme=""
 function Theme_Switch(){
-    var a=document.getElementsByClassName("is-large")[0].attributes.class.nodeValue.split(" ");
+    var a=document.getElementById("root").className.split(" ");
     if(Theme=="dark"){
-        a[1]="is-light";
-        Theme="light";
+        if(a[a.length-1]=="is-dark"){
+            a[a.length-1]="is-light"
+            Theme="light";
+        }
+        else{
+            a.push("is-light");
+            Theme="light";
+        }
     }
     else{
-        a[1]="is-dark";
-        Theme="dark";
+        if(a[a.length-1]=="is-light"){
+            a[a.length-1]="is-dark"
+            Theme="dark";
+        }
+        else{
+            a.push("is-dark");
+            Theme="dark";
+        }
     }
-    document.getElementsByClassName("is-large")[0].attributes.class.nodeValue=a[0]+" "+a[1];
+    document.getElementById("root").className=a.join(" ");
 }
+
+//設定初始主題
 
 if (matchMedia("(prefers-color-scheme: dark)")){
     Theme="light"
@@ -18,11 +32,11 @@ if (matchMedia("(prefers-color-scheme: dark)")){
 else{
     Theme="dark"
 }
-var a=document.getElementsByClassName("is-large")[0].attributes.class.nodeValue.split(" ");
+var a=document.getElementById("root").className.split(" ");
 if(Theme=="dark"){
-    a[1]="is-dark";
+    a.push("is-dark");
 }
 else{
-    a[1]="is-light";
+    a.push("is-light");
 }
-document.getElementsByClassName("is-large")[0].attributes.class.nodeValue=a[0]+" "+a[1];
+document.getElementById("root").className=a.join(" ");
