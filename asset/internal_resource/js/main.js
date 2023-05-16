@@ -26,11 +26,11 @@ function Theme_Switch(){
 
 //設定初始主題
 
-if (matchMedia("(prefers-color-scheme: dark)")){
-    Theme="light"
+if (matchMedia("(prefers-color-scheme: dark)").matches==true){
+    Theme="dark";
 }
 else{
-    Theme="dark"
+    Theme="light";
 }
 var a=document.getElementById("root").className.split(" ");
 if(Theme=="dark"){
