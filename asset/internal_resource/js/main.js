@@ -1,42 +1,39 @@
-var Theme=""
-function Theme_Switch(){
-    var a=document.getElementById("root").className.split(" ");
-    if(Theme=="dark"){
-        if(a[a.length-1]=="is-dark"){
-            a[a.length-1]="is-light"
-            Theme="light";
-        }
-        else{
-            a.push("is-light");
-            Theme="light";
-        }
+var Theme_List=["is-dark","is-light"];
+
+//設定主題
+function Theme_Set(Theme_Name){
+    var Page_Class=document.querySelector("html").className.split(" ");
+    if (Theme_List.includes(Page_Class[Page_Class.length-1])){
+        Page_Class[Page_Class.length-1]=Theme_Name;
     }
     else{
-        if(a[a.length-1]=="is-light"){
-            a[a.length-1]="is-dark"
-            Theme="dark";
-        }
-        else{
-            a.push("is-dark");
-            Theme="dark";
-        }
+        Page_Class.push(Theme_Name);
     }
-    document.getElementById("root").className=a.join(" ");
+    localStorage.setItem("theme",Theme_Name);
+    document.querySelector("html").className=Page_Class.join(" ");
 }
 
 //設定初始主題
+function Init_Theme(){
+    if (localStorage.getItem("theme")==null){
+        if (matchMedia("(prefers-color-scheme: dark)").matches==true){
+            localStorage.setItem("theme","is-dark");
+        }
+        else{
+            localStorage.setItem("theme","is-light");
+        }
+    }
+    Theme_Set(localStorage.getItem("theme"));
+}
 
-if (matchMedia("(prefers-color-scheme: dark)").matches==true){
-    Theme="dark";
+//切換主題
+function Theme_Switch(){
+    if (localStorage.getItem("theme")=="is-dark"){
+        Theme_Set("is-light");
+    }
+    else{
+        Theme_Set("is-dark");
+    }
 }
-else{
-    Theme="light";
-}
-var a=document.getElementById("root").className.split(" ");
-if(Theme=="dark"){
-    a.push("is-dark");
-}
-else{
-    a.push("is-light");
-}
-document.getElementById("root").className=a.join(" ");
+
+Init_Theme();
