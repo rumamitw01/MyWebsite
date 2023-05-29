@@ -15,3 +15,12 @@ request.onload=function(){
     }
     document.getElementById("repo-count").innerText="統計筆數："+data.length;
 }
+var requestURL="https://api.github.com/users/rumamitw01/events";
+var request2=new XMLHttpRequest();
+request2.open("get",requestURL);
+request2.responseType = 'json';
+request2.send();
+request2.onload=function(){
+    data=request2.response;
+    document.getElementById("recent").innerText=data[0].payload.commits[0].message+" @ "+data[0].repo.name;
+}
