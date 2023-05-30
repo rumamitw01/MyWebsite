@@ -26,12 +26,12 @@ function Locale_Switch(locale){
 			var data2_value=Object.values(data1_value[i]);
 			var data3_key=Object.keys(data2_value[0]);
 			var data3_value=Object.values(data2_value[0]);
-			for (var i=1;i<data3_key.length;i++){
+			for (var j=1;j<data3_key.length;j++){
 				if (data3_value[0]==path){
-					if (i==2){
-						document.title=data3_value[i];
+					if (j==2 && data3_value[0]=="/link/index.html"){
+						document.title=data3_value[j];
 					}
-					document.getElementById(data3_key[i]).innerText=data3_value[i];
+					document.getElementById(data3_key[j]).innerText=data3_value[j];
 				}
 				else{
 					return 0;
