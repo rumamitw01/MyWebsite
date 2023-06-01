@@ -17,11 +17,29 @@
                 <a href="./index.html" class="item is-text">RumamiDev Official</a>
             </div>
             <div class="end">
-                <div class="ts-tab is-pilled">
+                <div class="ts-tab is-pilled mobile:u-hidden">
                     <a href="./index.html" class="item">這是我的首頁</a>
                     <a href="./about.html" class="item border">我的個人介紹</a>
                     <a href="./work.html" class="item">我的作品一覽</a>
                     <a href="./link/index.html" class="item" target="_blank" rel="noreferrer noopenner">我的連結頁面</a>
+                </div>
+                <button class="mobile:ts-button mobile:is-icon" onclick="document.querySelector('.ts-app-drawer').classList.add('is-visible')">
+                    <span class="mobile:ts-icon mobile:is-bars-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="ts-app-drawer is-right is-small u-dark" style="color:white;">
+            <div class="content">
+                <div class="ts-content">
+                    <div class="ts-menu is-start-icon is-separated">
+                        <div class="item">
+                            <button class="ts-button" onclick="document.querySelector('.ts-app-drawer').classList.remove('is-visible')">返回</button>
+                        </div>
+                        <a href="./index.html" class="item">這是我的首頁</a>
+                        <a href="./about.html" class="item is-active">我的個人介紹</a>
+                        <a href="./work.html" class="item">我的作品一覽</a>
+                        <a href="./link/index.html" class="item" target="_blank" rel="noreferrer noopenner">我的連結頁面</a>
+                    </div>
                 </div>
             </div>
         </div>

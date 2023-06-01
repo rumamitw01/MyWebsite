@@ -17,11 +17,29 @@
                 <a href="./index.html" class="item is-text">RumamiDev Official</a>
             </div>
             <div class="end">
-                <div class="ts-tab is-pilled">
+                <div class="ts-tab is-pilled mobile:u-hidden">
                     <a href="./index.html" class="item border">這是我的首頁</a>
                     <a href="./about.html" class="item">我的個人介紹</a>
                     <a href="./work.html" class="item">我的作品一覽</a>
                     <a href="./link/index.html" class="item" target="_blank" rel="noreferrer noopenner">我的連結頁面</a>
+                </div>
+                <button class="mobile:ts-button mobile:is-icon" onclick="document.querySelector('.ts-app-drawer').classList.add('is-visible')">
+                    <span class="mobile:ts-icon mobile:is-bars-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="ts-app-drawer is-right is-small u-dark" style="color:white;">
+            <div class="content">
+                <div class="ts-content">
+                    <div class="ts-menu is-start-icon is-separated">
+                        <div class="item">
+                            <button class="ts-button" onclick="document.querySelector('.ts-app-drawer').classList.remove('is-visible')">返回</button>
+                        </div>
+                        <a href="./index.html" class="item is-active">這是我的首頁</a>
+                        <a href="./about.html" class="item">我的個人介紹</a>
+                        <a href="./work.html" class="item">我的作品一覽</a>
+                        <a href="./link/index.html" class="item" target="_blank" rel="noreferrer noopenner">我的連結頁面</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -59,6 +77,7 @@
                         <div class="ts-wrap is-center-aligned">
                             <a href="https://fb.com/RumamiTW" target="_blank" rel="noreferrer noopenner" class="ts-icon is-secondary is-facebook-icon is-circular is-large"></a>
                             <a href="https://github.com/rumamitw01" target="_blank" rel="noreferrer noopenner" class="ts-icon is-secondary is-github-icon is-circular is-large"></a>
+                            <a href="https://www.linkedin.com/in/rumami/" target="_blank" rel="noreferrer noopenner" class="ts-icon is-secondary is-linkedin-icon is-circular is-large"></a>
                         </div>
                         <div class="ts-space"></div>
                         <div class="ts-space"></div>
@@ -75,12 +94,12 @@
         <div class="ts-container is-padded">
             <div class="ts-box">
                 <div class="ts-grid is-2-columns">
-                    <div class="column is-3-wide">
+                    <div class="tablet+:column tablet+:is-3-wide mobile:ts-content">
                         <div class="ts-image">
                             <img src="./asset/internal_resource/img/coderyo.jpg" alt="CodeRyo 碼凌數位科技">
                         </div>
                     </div>
-                    <div class="column is-13-wide">
+                    <div class="tablet+:column tablet+:is-13-wide mobile:ts-content">
                         <div class="ts-content">
                             <div class="ts-header is-heavy is-center-aligned">CodeRyo 碼凌數位科技</div>
                             <p class="justify-text">我和幾位志同道合的好友共同成立了CodeRyo團隊，我們致力於伺服器服務以及智慧化金融交易等，並將「使未來不只是未來。」訂為我們的標語，期望能對資訊領域以及開源社群有所貢獻，並增強自我能力。</p>

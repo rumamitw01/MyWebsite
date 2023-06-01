@@ -6,12 +6,21 @@ request.send();
 request.onload=function(){
     data=request.response;
     for (var i=0;i<data.length;i++){
-        document.getElementById("projects").innerHTML+=
-        "<tr><td>"+String(i+1)+
-        "</td><td>"+data[i].name+
-        "</td><td><a href='"+data[i].svn_url+"' target='_blank' rel='noreferrer noopenner' class='ts-text is-external-link'>"+data[i].svn_url+
-        "</a></td><td>"+data[i].description+
+        var temp="<tr><td>"+String(i+1)+
+        "</td>";
+        if (screen.width<=767){
+            temp+="<td><a href='"+data[i].svn_url+
+            "' target='_blank' rel='noreferrer noopenner' class='mobile:ts-text mobile:is-external-link'>"+data[i].name+
+            "</a>";
+        }
+        else{
+            temp+="<td class='mobile:u-hidden'>"+data[i].name
+        }
+        temp+="</td><td class='mobile:u-hidden'><a href='"+data[i].svn_url+
+        "' target='_blank' rel='noreferrer noopenner' class='ts-text is-external-link'>"+data[i].svn_url+
+        "</a></td><td class='mobile:u-hidden'>"+data[i].description+
         "</td></tr>";
+        document.getElementById("projects").innerHTML+=temp;
     }
     document.getElementById("repo-count").innerText="統計筆數："+data.length;
 }
