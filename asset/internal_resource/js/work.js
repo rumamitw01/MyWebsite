@@ -31,5 +31,10 @@ request2.responseType = 'json';
 request2.send();
 request2.onload=function(){
     data=request2.response;
-    document.getElementById("recent").innerText=data[0].payload.commits[0].message+" @ "+data[0].repo.name;
+    if (data[0].type=="PullRequestEvent"){
+        document.getElementById("recent").innerText=data[0].payload.pull_request.title+" @ "+data[0].repo.name;
+    }
+    else{
+        document.getElementById("recent").innerText=data[0].payload.commits[0].message+" @ "+data[0].repo.name;
+    }
 }

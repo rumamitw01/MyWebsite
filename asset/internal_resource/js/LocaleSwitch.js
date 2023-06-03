@@ -1,7 +1,8 @@
+/*
 var LocalePath="/asset/internal_resource/locale/"; //這裡請輸入語系檔所在資料夾
 
 function Locale_Switch(locale){
-	document.getElementById("locale").innerText=locale;
+	localStorage.setItem("locale",locale)
 	var path=String(document.location);
 	var temp_list=path.split("/");
 	if (path.endsWith("html")==false || path.endsWith("php")==false){
@@ -47,22 +48,33 @@ function Locale_Switch(locale){
 
 //利用User Agent設定初始語系
 
-var locale=navigator.language;
-locale=locale.toLowerCase();
-var requestURL=LocalePath+"supported_locale.json";
-var request=new XMLHttpRequest();
-request.open("get",requestURL);
-request.responseType = 'json';
-request.send();
-request.onload = function() {
-	var data=request.response;
-	var data_key=Object.keys(data);
-	var data_value=Object.values(data);
-	for (var i=0;i<data_key.length;i++){
-		if (locale.startsWith(data_key[i]) && locale.endsWith(data_value[i].toLowerCase())){
-			Locale_Switch(data_key[i]+"-"+data_value[i]);
-			return 0;
+function Init_Locale(){
+	if (localStorage.getItem("locale")==null){
+		var locale=navigator.language;
+		locale=locale.toLowerCase();
+		var requestURL=LocalePath+"supported_locale.json";
+		var request=new XMLHttpRequest();
+		request.open("get",requestURL);
+		request.responseType = 'json';
+		request.send();
+		request.onload = function() {
+			var data=request.response;
+			var data_key=Object.keys(data);
+			var data_value=Object.values(data);
+			for (var i=0;i<data_key.length;i++){
+				if (locale.startsWith(data_key[i]) && locale.endsWith(data_value[i].toLowerCase())){
+					Locale_Switch(data_key[i]+"-"+data_value[i]);
+					return 0;
+				}
+			}
+			Locale_Switch("en-US");
 		}
 	}
-	Locale_Switch("en-US");
+	else{
+		Locale_Switch(localStorage.getItem("locale"));
+	}
 }
+
+Init_Locale();
+*/
+//預計打掉重來，暫時移除語系切換功能
