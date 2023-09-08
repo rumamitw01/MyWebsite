@@ -34,7 +34,11 @@ request2.onload=function(){
     if (data[0].type=="PullRequestEvent"){
         document.getElementById("recent").innerText=data[0].payload.pull_request.title+" @ "+data[0].repo.name;
     }
+    else if (data[0].type=="IssuesEvent"){
+        document.getElementById("recent").innerText="Issue: "+data[0].payload.issue.title+" @ "+data[0].repo.name;
+    }
     else{
         document.getElementById("recent").innerText=data[0].payload.commits[0].message+" @ "+data[0].repo.name;
     }
 }
+IssuesEvent
