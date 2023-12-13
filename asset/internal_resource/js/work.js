@@ -37,6 +37,9 @@ request2.onload=function(){
     else if (data[0].type=="IssuesEvent"){
         document.getElementById("recent").innerText="Issue: "+data[0].payload.issue.title+" @ "+data[0].repo.name;
     }
+    else if (data[0].type=="IssueCommentEvent"){
+        document.getElementById("recent").innerText="Issue: "+data[0].payload.issue.title+" @ "+data[0].repo.name;
+    }
 	else if (data[0].type=="CreateEvent"){
         document.getElementById("recent").innerText="Create "+data[0].repo.name;
     }
@@ -44,4 +47,3 @@ request2.onload=function(){
         document.getElementById("recent").innerText=data[0].payload.commits[0].message+" @ "+data[0].repo.name;
     }
 }
-IssuesEvent
