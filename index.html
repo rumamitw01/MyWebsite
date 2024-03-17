@@ -1,10 +1,31 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="refresh" content="5; url=./old/index.html" />
+    <script>
+        window.onload = function () {
+            var countDown = 5;
+            var countdownElement = document.getElementById('countdown');
+
+            function updateCountdown() {
+                countdownElement.textContent = countDown;
+                countDown--;
+                if (countDown < 0) {
+                    clearInterval(interval);
+                }
+            }
+
+            updateCountdown();
+            var interval = setInterval(updateCountdown, 1000);
+        };
+    </script>
 </head>
+
 <body>
     <h1 style="text-align: center;">新版個人網頁即將來臨，敬請期待!</h1>
-    <h1 style="text-align: center;">將於5秒後跳轉至舊版網頁</h1>
+    <h1 style="text-align: center;">將於<text id="countdown" style="text-align: center;">5</text>秒後跳轉至舊版網頁</h1>
 </body>
+
 </html>
