@@ -1,31 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW" class="mobile:is-small tablet:is-medium desktop+:is-large">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="5; url=./old/index.html" />
-    <script>
-        window.onload = function () {
-            var countDown = 5;
-            var countdownElement = document.getElementById('countdown');
+    <meta name="description" content="RumamiDev's Homepage.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RumamiDev Official</title>
 
-            function updateCountdown() {
-                countdownElement.textContent = countDown;
-                countDown--;
-                if (countDown < 0) {
-                    clearInterval(interval);
-                }
-            }
+    <!-- Google Fonts: Outfit (headings/body) & JetBrains Mono (data/monospace) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
-            updateCountdown();
-            var interval = setInterval(updateCountdown, 1000);
-        };
-    </script>
+    <!-- Tocas CSS & Custom Stylesheet -->
+    <link rel="stylesheet" href="./asset/external_resource/tocas/tocas.min.css">
+    <link rel="stylesheet" href="./asset/internal_resource/css/index.css">
+
+    <!-- Tocas JS -->
+    <script src="./asset/external_resource/tocas/tocas.min.js"></script>
+
+    <!-- Theme Switch JS (Sets theme immediately on load to avoid flashing) -->
+    <script src="./asset/internal_resource/js/ThemeSwitch.js"></script>
+
+    <!-- Vue 3 & Vue Router 4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@4/dist/vue-router.global.prod.js"></script>
+
+    <link rel="icon" href="./asset/internal_resource/img/Rumami_Link_Website_Icon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./asset/internal_resource/img/Rumami_Link_Website_Icon.ico" type="image/x-icon" />
 </head>
 
 <body>
-    <h1 style="text-align: center;">新版個人網頁即將來臨，敬請期待!</h1>
-    <h1 style="text-align: center;">將於<text id="countdown" style="text-align: center;">5</text>秒後跳轉至舊版網頁</h1>
+    <div id="app">
+        <div class="app-layout" :class="{ 'is-sidebar-collapsed': isSidebarCollapsed }">
+            <!-- 電腦版左側導覽列 (Desktop Sidebar - only visible on desktop/tablet+) -->
+            <div class="desktop-sidebar mobile:u-hidden" :class="{ 'is-collapsed': isSidebarCollapsed }">
+                <div class="sidebar-header">
+                    <router-link to="/" class="sidebar-brand" title="返回首頁">
+                        <img src="./asset/internal_resource/img/Rumami_Link_Website_Icon.jpg" alt="RumamiDev Logo"
+                            class="sidebar-logo">
+                        <span class="full-text">RumamiDev Official</span>
+                    </router-link>
+                    <button class="ts-button is-icon is-ghost collapse-toggle mobile:u-hidden" @click="toggleSidebar"
+                        title="展開/縮小側邊欄">
+                        <span class="ts-icon"
+                            :class="isSidebarCollapsed ? 'is-angles-right-icon' : 'is-angles-left-icon'"></span>
+                    </button>
+                </div>
+                <div class="sidebar-menu">
+                    <router-link to="/" class="sidebar-item" active-class="is-active" title="這是我的首頁">
+                        <span class="ts-icon is-house-icon"></span>
+                        <span class="item-text">這是我的首頁</span>
+                    </router-link>
+                    <router-link to="/about" class="sidebar-item" active-class="is-active" title="我的個人介紹">
+                        <span class="ts-icon is-user-icon"></span>
+                        <span class="item-text">我的個人介紹</span>
+                    </router-link>
+                    <router-link to="/work" class="sidebar-item" active-class="is-active" title="我的作品一覽">
+                        <span class="ts-icon is-code-icon"></span>
+                        <span class="item-text">我的作品一覽</span>
+                    </router-link>
+                    <a href="./link/index.html" class="sidebar-item" target="_blank" rel="noreferrer noopener"
+                        title="我的連結頁面">
+                        <span class="ts-icon is-link-icon"></span>
+                        <span class="item-text">我的連結頁面</span>
+                    </a>
+                </div>
+                <div class="sidebar-footer">
+                    <div class="copyright">Copyright © 2026 Rumami.</div>
+                    <button class="ts-button is-circular theme-btn" @click="toggleTheme" title="切換明暗主題">
+                        <span class="ts-icon is-palette-icon"></span>
+                        <span class="btn-text">明暗切換</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 右側主要內容容器 (Main Container) -->
+            <div class="main-container">
+                <!-- 行動裝置頂部導覽列 (Mobile Topbar - only visible on mobile) -->
+                <div class="ts-app-topbar tablet+:u-hidden">
+                    <div class="start">
+                        <router-link to="/" class="item is-text"
+                            style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:inherit;">
+                            <img src="./asset/internal_resource/img/Rumami_Link_Website_Icon.jpg" alt="RumamiDev Logo"
+                                style="width:24px; height:24px; border-radius:4px;">
+                            <span>RumamiDev Official</span>
+                        </router-link>
+                    </div>
+                    <div class="end">
+                        <button class="ts-button is-icon" @click="toggleDrawer(true)">
+                            <span class="ts-icon is-bars-icon" style="pointer-events: none;"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 行動裝置側邊選單 (Mobile Drawer) -->
+                <div class="ts-app-drawer is-right tablet+:u-hidden" :class="{ 'is-visible': isDrawerVisible }"
+                    style="z-index: 10000;">
+                    <!-- 滿版絕對定位遮罩，不干擾內部 flex 排版 -->
+                    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(2px);"
+                        @click="toggleDrawer(false)"></div>
+                    <div class="content" style="position: relative; z-index: 1; height: 100%;">
+                        <div class="ts-content">
+                            <div class="ts-menu is-start-icon is-separated">
+                                <div class="item">
+                                    <button class="ts-button" @click="toggleDrawer(false)">返回</button>
+                                </div>
+                                <router-link to="/" class="item" active-class="is-active" @click="toggleDrawer(false)">
+                                    <span class="ts-icon is-house-icon"></span>
+                                    這是我的首頁
+                                </router-link>
+                                <router-link to="/about" class="item" active-class="is-active"
+                                    @click="toggleDrawer(false)">
+                                    <span class="ts-icon is-user-icon"></span>
+                                    我的個人介紹
+                                </router-link>
+                                <router-link to="/work" class="item" active-class="is-active"
+                                    @click="toggleDrawer(false)">
+                                    <span class="ts-icon is-code-icon"></span>
+                                    我的作品一覽
+                                </router-link>
+                                <a href="./link/index.html" class="item" target="_blank" rel="noreferrer noopener">
+                                    <span class="ts-icon is-link-icon"></span>
+                                    我的連結頁面
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sticky Hero Banner (Global) -->
+                <div style="position: sticky; top: 0; z-index: 100; background-color: var(--bg-main); padding-top: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                    <div class="ts-container is-padded">
+                        <div class="page-hero-banner" style="margin-bottom: 0;">
+                            <div class="ts-header is-huge is-heavy">Wen-Yu, Huang</div>
+                            <div class="ts-text is-secondary">NPTU Student, Developer, and Programmer.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 渲染路由視窗 (Dynamic Router Content) -->
+                <div style="padding-top: 1rem;">
+                    <router-view></router-view>
+                </div>
+
+                <!-- 行動裝置頁尾 (Mobile Footer - only visible on mobile) -->
+                <div class="ts-app-topbar tablet+:u-hidden">
+                    <div class="start">
+                        <div class="ts-content" style="font-size: 0.85rem; opacity: 0.8;">Copyright © 2023 Rumami. All
+                            rights reserved.</div>
+                    </div>
+                    <div class="center">
+                    </div>
+                    <div class="end">
+                        <button class="ts-button is-circular theme-btn" @click="toggleTheme" title="切換明暗主題"
+                            style="padding: 0.5rem 0.75rem;">
+                            <span class="ts-icon is-palette-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 掛載 Vue 單頁應用程式主邏輯 -->
+    <script src="./app.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,88 @@
+{
+    "experiences": [
+        {
+            "period": "2019~2019",
+            "title": "科丁聯盟 / Scratch課程助教",
+            "icon": "is-school-icon"
+        },
+        {
+            "period": "2021~2023",
+            "title": "淡江大學資訊與圖書館學系 / 學生",
+            "icon": "is-school-icon"
+        },
+        {
+            "period": "2022~",
+            "title": "CodeRyo 碼凌數位科技 / Full-Stack Developer",
+            "icon": "is-code-icon"
+        },
+        {
+            "period": "2022~",
+            "title": "Digital Scholarship / 軟體 Zotero 正體中文語系主要維護者",
+            "icon": "is-pencil-icon"
+        },
+        {
+            "period": "2023~2023",
+            "title": "社團法人無礙玩家生活關懷協會 / 影片拍攝剪輯後製專員",
+            "icon": "is-video-icon"
+        },
+        {
+            "period": "2023~2025",
+            "title": "屏東大學電腦與通訊學系 / 學生",
+            "icon": "is-school-icon"
+        },
+        {
+            "period": "2024~2024",
+            "title": "社團法人無礙玩家生活關懷協會 / 影片拍攝剪輯後製專員",
+            "icon": "is-video-icon"
+        },
+        {
+            "period": "2025~",
+            "title": "屏東大學資訊工程學系碩士班 / 學生",
+            "icon": "is-school-icon"
+        }
+    ],
+    "honors": [
+        {
+            "year": "2014",
+            "name": "全國音樂比賽高雄市初賽 口琴合奏國小組",
+            "award": "優等"
+        },
+        {
+            "year": "2015",
+            "name": "全國學生音樂比賽 口琴合奏國小團體組",
+            "award": "優等"
+        }
+    ],
+    "certifications": [
+        {
+            "year": "2011",
+            "name": "口琴分級檢定",
+            "level": "12級"
+        },
+        {
+            "year": "2020",
+            "name": "JLPT 日本語能力測驗",
+            "level": "N4"
+        },
+        {
+            "year": "2021",
+            "name": "JLPT 日本語能力測驗",
+            "level": "N3"
+        },
+        {
+            "year": "2023",
+            "name": "TQC+ 程式語言 Python 3",
+            "level": "專業級"
+        },
+        {
+            "year": "2023",
+            "name": "Mircosoft Certified Azure AI Fundamentals",
+            "level": ""
+        },
+        {
+            "year": "2025",
+            "name": "JLPT 日本語能力測驗",
+            "level": "N2"
+        }
+    ]
+}
