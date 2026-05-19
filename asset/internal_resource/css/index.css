@@ -212,6 +212,7 @@ code, pre, .ts-table, .timeline-period, .item-date, .stat-value, .ts-timeline .i
 }
 
 .repo-flat-card .repo-link {
+    font-family: 'Outfit', "Noto Sans TC", sans-serif;
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
